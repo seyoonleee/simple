@@ -53,8 +53,9 @@ const Nav = () => {
   const handleCartClick = () => {
     if (!localStorage.getItem('Token')) {
       alert('로그인 하세요.');
-      navigate('/login');
+      return navigate('/login');
     }
+    navigate('/cart');
   };
 
   return (

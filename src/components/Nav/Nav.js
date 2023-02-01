@@ -50,6 +50,13 @@ const Nav = () => {
     setIsMouseHover(boolean);
   };
 
+  const handleCartClick = () => {
+    if (!localStorage.getItem('Token')) {
+      alert('로그인 하세요.');
+      navigate('/login');
+    }
+  };
+
   return (
     <div className="nav">
       <div className="linkWrap">
@@ -89,9 +96,7 @@ const Nav = () => {
               <CiSearch className="navButtonIcon" />
             </button>
           </form>
-          <Link to="/cart">
-            <BsCart3 className="navCart" />
-          </Link>
+          <BsCart3 className="navCart" onClick={handleCartClick} />
         </div>
       </div>
       <div className="categoryWrap">
@@ -117,12 +122,8 @@ const Nav = () => {
             );
           })}
         </div>
-        <div className="blank">
-          {currentScroll >= 110 && (
-            <Link to="/cart">
-              <BsCart3 className="navCartScroll" />
-            </Link>
-          )}
+        <div className="blank" onClick={handleCartClick}>
+          {currentScroll >= 110 && <BsCart3 className="navCartScroll" />}
         </div>
       </div>
     </div>
